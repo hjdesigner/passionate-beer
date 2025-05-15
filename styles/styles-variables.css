@@ -1,5 +1,12 @@
 :root {
+  --container-max-width: 1440px;
+  --ui-container-padding-horizontal-lg: 64px;
+  --ui-container-padding-horizontal-md: 40px;
+  --ui-container-padding-horizontal-sm: 24px;
+  --ui-navbar-padding: 16px;
   --ui-font-weight-lg: 700;
   --ui-font-weight-md: 400;
   --ui-colors-white: #FFFFFF;
+  --ui-colors-grey: #DDDDDD;
+  --ui-colors-green: #007782;
 }

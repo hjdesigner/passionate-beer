@@ -1,0 +1,9 @@
+.header {
+  padding: var(--ui-navbar-padding) 0;
+  border-bottom: 1px solid var(--ui-colors-grey);
+}
+.logo {
+  font-size: 18px;
+  font-weight: var(--ui-font-weight-lg);
+  color: var(--ui-colors-green);
+}

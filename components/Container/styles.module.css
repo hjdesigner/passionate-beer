@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 var(--ui-container-padding-horizontal-sm);
+
+  @media (min-width: 640px) {
+    padding: 0 var(--ui-container-padding-horizontal-md);
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0 var(--ui-container-padding-horizontal-lg);
+  }
+}

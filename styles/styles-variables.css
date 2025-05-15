@@ -9,4 +9,5 @@
   --ui-colors-white: #FFFFFF;
   --ui-colors-grey: #DDDDDD;
   --ui-colors-green: #007782;
+  --ui-colors-overlay: rgba(0, 0, 0, 0.6);
 }

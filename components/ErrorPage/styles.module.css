@@ -1,0 +1,5 @@
+.errorText {
+  padding: 100px 0;
+  text-align: center;
+  font-weight: var(--ui-font-weight-lg);
+}

@@ -1,0 +1,55 @@
+
+.lgHeading {
+  --ui-font-size: 28px;
+  --ui-font-height: 28px;
+
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-font-height);
+  font-weight: var(--ui-font-weight-lg);
+
+  @media (min-width: 640px) {
+    --ui-font-size: 40px;
+    --ui-font-height: 40px;
+  }
+
+  @media (min-width: 1280px) {
+    --ui-font-size: 55px;
+    --ui-font-height: 55px;
+  }
+}
+.mdHeading {
+  --ui-font-size: 22px;
+  --ui-font-height: 22px;
+
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-font-height);
+  font-weight: var(--ui-font-weight-lg);
+
+  @media (min-width: 640px) {
+    --ui-font-size: 28px;
+    --ui-font-height: 28px;
+  }
+
+  @media (min-width: 1280px) {
+    --ui-font-size: 48px;
+    --ui-font-height: 48px;
+  }
+}
+.smHeading {
+  --ui-font-size: 16px;
+  --ui-font-height: 16px;
+
+  font-size: var(--ui-font-size);
+  line-height: var(--ui-font-height);
+  font-weight: var(--ui-font-weight-lg);
+
+  @media (min-width: 640px) {
+    --ui-font-size: 18px;
+    --ui-font-height: 18px;
+  }
+
+  @media (min-width: 1280px) {
+    --ui-font-size: 20px;
+    --ui-font-height: 20px;
+  }
+}

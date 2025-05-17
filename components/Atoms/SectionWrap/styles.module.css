@@ -1,0 +1,13 @@
+.sectionWrap {
+  width: 100%;
+}
+
+.topSpace {
+  @mixin spacingTop;
+}
+.bottomSpace {
+  @mixin spacingBottom;
+}
+.bothSpace {
+  @mixin spacingBoth;
+}

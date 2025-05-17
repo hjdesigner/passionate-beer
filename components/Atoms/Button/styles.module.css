@@ -1,0 +1,20 @@
+.button {
+  background-color: var(--ui-colors-green);
+  border-radius: var(--ui-button-border-radius);
+  color: var(--ui-colors-white);
+  cursor: pointer;
+  font-weight: var(--ui-font-weight-md);
+
+  &.smSize {
+    font-size: 12px;
+    padding: var(--ui-button-padding-sm);
+  }
+  &.mdSize {
+    font-size: 14px;
+    padding: var(--ui-button-padding-md);
+  }
+  &.lgSize {
+    font-size: 16px;
+    padding: var(--ui-button-padding-lg);
+  }
+}

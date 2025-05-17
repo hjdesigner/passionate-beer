@@ -1,0 +1,33 @@
+@define-mixin spacingTop {
+  padding-top: var(--ui-section-wrap-padding-vertical-sm);
+
+  @media (min-width: 640px) {
+    padding-top: var(--ui-section-wrap-padding-vertical-md);
+  }
+
+  @media (min-width: 1280px) {
+    padding-top: var(--ui-section-wrap-padding-vertical-lg);
+  } 
+}
+@define-mixin spacingBottom {
+  padding-bottom: var(--ui-section-wrap-padding-vertical-sm);
+
+  @media (min-width: 640px) {
+    padding-bottom: var(--ui-section-wrap-padding-vertical-md);
+  }
+
+  @media (min-width: 1280px) {
+    padding-bottom: var(--ui-section-wrap-padding-vertical-lg);
+  } 
+}
+@define-mixin spacingBoth {
+  padding: var(--ui-section-wrap-padding-vertical-sm) 0;
+
+  @media (min-width: 640px) {
+    padding: var(--ui-section-wrap-padding-vertical-md) 0;
+  }
+
+  @media (min-width: 1280px) {
+    padding: var(--ui-section-wrap-padding-vertical-lg) 0;
+  } 
+}

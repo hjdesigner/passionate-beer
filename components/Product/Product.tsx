@@ -5,6 +5,7 @@ import { Beer } from "@/components/ShowCase/ShowCase";
 import Svgheart from '/public/assets/showcase/heart.svg';
 
 import styles from './styles.module.css';
+import Link from "next/link";
 
 type ProductProps = {
   content: Beer;
@@ -21,11 +22,19 @@ const Product = ({ content } : ProductProps) => {
 
   return (
     <SectionWrap space="top" className={styles.customShowCase}>
+      <nav className={styles.breadcrumb}>
+        <ul>
+          <li><Link href='/'>All beers</Link></li>
+          <li>/</li>
+          <li>{name}</li>
+        </ul>
+      </nav>
       <section className={styles.productHero}>
         <figure className={styles.productImage}>
           <Image
             src={image}
             alt={altImage}
+            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw"
             fill
           />
         </figure>

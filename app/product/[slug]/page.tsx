@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Params) {
     title: `${beer.name} – Passionate Beer`,
     description: beer.details,
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/beers/${beer.id}`,
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/product/${beer.slug}`,
     },
   };
 }

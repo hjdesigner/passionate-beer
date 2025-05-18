@@ -17,6 +17,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
+    "js-cookie": "^3.0.5",
     "next": "15.3.2",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
@@ -32,6 +33,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^29.5.14",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

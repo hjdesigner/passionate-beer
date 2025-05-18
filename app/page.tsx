@@ -1,9 +1,12 @@
+import { cookies } from 'next/headers';
 import { notFound } from "next/navigation";
 import { ShowCase } from "@/components";
 import { getBeers } from "@/services/beers";
 
 export async function generateMetadata() {
-  const beers = await getBeers();
+  const cookieStore = await cookies();
+  const userId = cookieStore.get('clientId')?.value || 1;
+  const beers = await getBeers(Number(userId));
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   return {
@@ -21,8 +24,10 @@ export async function generateMetadata() {
 
 
 export default async  function Home() {
-  const beers = await getBeers();
-
+  const cookieStore = await cookies();
+  const userId = cookieStore.get('clientId')?.value || 1;
+  const beers = await getBeers(Number(userId));
+  
   if (!beers) notFound(); 
 
   return (

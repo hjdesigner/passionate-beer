@@ -5,7 +5,6 @@ export const getBeers = async (
   page = 1,
   filters: { brand?: string; rating?: string } = {}
 ): Promise<Beer[]> => {
-
   const params = new URLSearchParams({
     user: String(user),
     limit: '8',

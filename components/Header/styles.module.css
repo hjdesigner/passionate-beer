@@ -7,3 +7,10 @@
   font-weight: var(--ui-font-weight-lg);
   color: var(--ui-colors-green);
 }
+.custonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  
+}

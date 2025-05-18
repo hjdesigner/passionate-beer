@@ -7,10 +7,9 @@ import Image from 'next/image';
 import { Button, Heading, SectionWrap } from '@/components';
 import Svgheart from '/public/assets/showcase/heart.svg';
 import { toSlug } from "@/utils/toSlug";
-
-import styles from './styles.module.css';
 import { getBeers } from "@/services/beers";
 
+import styles from './styles.module.css';
 
 export type Beer = {
   id: string;
@@ -19,6 +18,10 @@ export type Beer = {
   user: number;
   rating: number;
   altImage: string;
+  details: string;
+  brand: string;
+  year: string;
+  createdAt: string;
 };
 
 type ShowCaseProps = {

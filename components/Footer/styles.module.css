@@ -1,0 +1,14 @@
+.footer {
+  background-color: var(--ui-colors-grey);
+  text-align: center;
+  margin-top: var(--ui-section-wrap-padding-vertical-sm);
+  padding: var(--ui-footer-padding) 0;
+
+  @media (min-width: 640px) {
+    margin-top: var(--ui-section-wrap-padding-vertical-md);
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: var(--ui-section-wrap-padding-vertical-lg);
+  }
+}

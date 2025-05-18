@@ -7,9 +7,9 @@ import Image from 'next/image';
 import { ActionsBar, Button, Heading, SectionWrap } from '@/components';
 import Svgheart from '/public/assets/showcase/heart.svg';
 import { getBeers } from "@/services/beers";
+import { FilterParams } from "../ActionsBar/ActionsBar";
 
 import styles from './styles.module.css';
-import { FilterParams } from "../ActionsBar/ActionsBar";
 
 export type Beer = {
   id?: string;
@@ -92,6 +92,7 @@ const ShowCase = ({ content }: ShowCaseProps) => {
                     src={beer.image}
                     alt={beer.altImage}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   />
                 </figure>
                 <div className={styles.showCaseBeerContent}>

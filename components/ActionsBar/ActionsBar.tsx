@@ -106,19 +106,17 @@ const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => 
           />
           <Button type='submit' disabled={formFilter.brand === '' && formFilter.rating === ''}>Filter</Button>
         </form>
-        <div>
-          <Button onClick={() => {
-            setFormErrors({});
-            setFormSuccess(false);
-            setFormError(false);
-            setIsOpen(true);
-          }}>
-            Add new beer
-          </Button>
-        </div>
+        <Button onClick={() => {
+          setFormErrors({});
+          setFormSuccess(false);
+          setFormError(false);
+          setIsOpen(true);
+        }}>
+          Add new beer
+        </Button>
       </section>
       <div className={clsx(styles.actionBarModal, { [styles.open]: isOpen })}>
-        <Heading as="h3" size='sm'>Add New Beer</Heading>
+        <Heading as="h2" size='sm'>Add New Beer</Heading>
         {formSucess ? (
           <div className={styles.formStatus}>
             <p>Beer added successfully!</p>

@@ -6,6 +6,7 @@ export { default as Product } from './Product';
 export { default as ErrorPage } from './ErrorPage';
 export { default as ActionsBar } from './ActionsBar';
 export { default as ShowCase } from './ShowCase';
+export { default as Footer } from './Footer';
 export { default as Heading } from './Atoms/Heading';
 export { default as Button } from './Atoms/Button';
 export { default as FormField } from './Atoms/FormField';

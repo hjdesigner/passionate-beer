@@ -1,7 +1,14 @@
 .actionBar {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: var(--ui-field-gap);
+  
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 .actionBarModal {
   width: 100%;
@@ -54,7 +61,15 @@
 }
 .filter {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   gap: var(--ui-form-gap);
+  width: 100%;
+
+  @media (min-width: 640px) {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: inherit;
+  }
 }

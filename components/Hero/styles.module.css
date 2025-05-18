@@ -1,20 +1,15 @@
 .hero {
   width: 100%;
-  overflow: 100%;
   position: relative;
-  padding-bottom: 50%;
   overflow: hidden;
+  aspect-ratio: 1/0.5;
 
   img {
     object-fit: cover;
   }
 
   @media (min-width: 640px) {
-    padding-bottom: 30%;
-  }
-
-  @media (min-width: 1280px) {
-    padding-bottom: 25%;
+    aspect-ratio: 1/0.3;
   }
 }
 .heroOverlay {

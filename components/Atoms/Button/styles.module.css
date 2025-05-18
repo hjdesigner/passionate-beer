@@ -25,4 +25,8 @@
     background-color: var(--ui-colors-green);
     color: var(--ui-colors-white);
   }
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 }

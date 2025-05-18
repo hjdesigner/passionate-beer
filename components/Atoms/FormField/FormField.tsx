@@ -3,17 +3,18 @@ import clsx from 'clsx';
 import styles from './styles.module.css';
 
 type FormFieldProps = {
-  label: string;
+  label?: string;
   name: string;
-  type?: 'text' | 'number' | 'textarea' | 'range';
+  type?: 'text' | 'number' | 'textarea' | 'range' | 'select';
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   placeholder?: string;
   error?: string;
   required?: boolean;
   min?: number;
   max?: number;
   help?: string;
+  options?: { label: string; value: string }[];
 };
 
 const FormField = ({
@@ -28,12 +29,13 @@ const FormField = ({
   min,
   max,
   help,
+  options,
 }: FormFieldProps) => {
   return (
     <div className={styles.formField}>
-      <label htmlFor={name} className={styles.label}>
+      {label && <label htmlFor={name} className={styles.label}>
         {label} {required && <span>*</span>}
-      </label>
+      </label>}
       <div className={styles.fieldWrap}>
         {type === 'textarea' ? (
           <textarea
@@ -43,7 +45,23 @@ const FormField = ({
             onChange={onChange}
             className={clsx(styles.textArea, { [styles.error] : error})}
           />
-        ) : (
+        ) : type === 'select' ? (
+          <select
+            id={name}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            className={clsx(styles.select, { [styles.error]: error })}
+          >
+            <option value="">Select an option</option>
+            {options?.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        ) :  (
           <input
             id={name}
             name={name}

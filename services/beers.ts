@@ -1,10 +1,33 @@
 import { Beer } from "@/components/ShowCase/ShowCase";
 
-export const getBeers = async (user = 1, page = 1): Promise<Beer[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/beers?user=${user}&order=desc&limit=8&page=${page}`, {
-    next: { revalidate: 60 },
+export const getBeers = async (
+  user = 1,
+  page = 1,
+  filters: { brand?: string; rating?: string } = {}
+): Promise<Beer[]> => {
+
+  const params = new URLSearchParams({
+    user: String(user),
+    limit: '8',
+    page: String(page),
+    order: 'desc',
+    sortBy: 'createdAt',
   });
 
+  if (filters.brand && filters.brand !== '') {
+    params.append('brand', filters.brand);
+  }
+
+  if (filters.rating && filters.rating !== '') {
+    params.append('rating', filters.rating);
+  }
+
+  const url = `${process.env.NEXT_PUBLIC_API}/beers?${params.toString()}`;
+  
+  const res = await fetch(url, {
+    next: { revalidate: 60 },
+  });
+  if (res.status === 404) return [];
   if (!res.ok) throw new Error('Error searching for beers');
   return await res.json();
 };

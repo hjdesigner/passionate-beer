@@ -52,3 +52,9 @@
   text-align: center;
   gap: 24px;
 }
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-form-gap);
+}

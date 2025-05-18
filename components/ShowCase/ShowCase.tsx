@@ -9,6 +9,7 @@ import Svgheart from '/public/assets/showcase/heart.svg';
 import { getBeers } from "@/services/beers";
 
 import styles from './styles.module.css';
+import { FilterParams } from "../ActionsBar/ActionsBar";
 
 export type Beer = {
   id?: string;
@@ -34,6 +35,10 @@ const ShowCase = ({ content }: ShowCaseProps) => {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [filter, setFilter] = useState<FilterParams>({
+    brand: '',
+    rating: '',
+  });
 
   const loadMore = async () => {
     if (loading) return;
@@ -42,7 +47,7 @@ const ShowCase = ({ content }: ShowCaseProps) => {
 
     try {
       const nextPage = page + 1;
-      const newBeers = await getBeers(1, nextPage);
+      const newBeers = await getBeers(1, nextPage, filter);
 
       if (newBeers.length === 0) {
         setHasMore(false);
@@ -59,8 +64,15 @@ const ShowCase = ({ content }: ShowCaseProps) => {
   };
 
   const upadtedBeers = async () => {
-    const result = await getBeers();
-    console.log(result)
+    const result = await getBeers();    
+    if (result) {
+      setBeers(result);
+    }
+  }
+
+  const fielterBeers = async (data: FilterParams) => {
+    setFilter(data);
+    const result = await getBeers(1, 1, data);    
     if (result) {
       setBeers(result);
     }
@@ -68,7 +80,7 @@ const ShowCase = ({ content }: ShowCaseProps) => {
 
   return (
     <SectionWrap space='top' className={styles.customShowCase}>
-      <ActionsBar handleFallback={upadtedBeers} />
+      <ActionsBar handleFallback={upadtedBeers} handleFilterFallback={fielterBeers} />
       <Heading as='h2'>Your collection</Heading>
       {beers.length > 0 ? (
         <ul className={styles.showCase}>
@@ -98,11 +110,11 @@ const ShowCase = ({ content }: ShowCaseProps) => {
         </ul>
       ) : (
         <div className={styles.empty}>
-          <Heading as='h2' size="sm">You have not registered any beer in your collection</Heading>
+          <Heading as='h2' size="sm">No beer record found in your collection</Heading>
         </div>
       )}
       
-      {hasMore && beers.length > 0 && (
+      {hasMore && beers.length >= 8 && (
         <div className={styles.loadMore}>
           {error && <p className={styles.error}>There was an error trying to load more beer, please try again later</p>}
           <Button size='lg' onClick={loadMore} disabled={loading}>

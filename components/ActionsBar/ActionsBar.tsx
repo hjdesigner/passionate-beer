@@ -9,11 +9,17 @@ import styles from './styles.module.css';
 import { toSlug } from '@/utils/toSlug';
 import { createBeer } from '@/services/beers';
 
+export type FilterParams = {
+  brand: string;
+  rating: string;
+};
+
 type ActionBarTypes = {
   handleFallback: () => void;
+  handleFilterFallback: (filters: FilterParams) => void;
 }
 
-const ActionBar = ({ handleFallback }: ActionBarTypes) => {
+const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -24,13 +30,21 @@ const ActionBar = ({ handleFallback }: ActionBarTypes) => {
     altImage: '',
     rating: '3',
   });
+  const [formFilter, setFormFilter] = useState({
+    brand: '',
+    rating: '',
+  });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [formSucess, setFormSuccess] = useState(false);
   const [formError, setFormError] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+  const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormFilter((prev) => ({ ...prev, [name]: value }));
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,10 +70,42 @@ const ActionBar = ({ handleFallback }: ActionBarTypes) => {
     }
   };
 
+  const handleFilterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleFilterFallback(formFilter)
+  }
+
   return (
     <>
       <section className={styles.actionBar}>
-        <div></div>
+        <form onSubmit={handleFilterSubmit} className={styles.filter}>
+          <FormField
+            name="brand"
+            type="select"
+            value={formFilter.brand}
+            onChange={handleChangeFilter}
+            options={[
+              { label: 'Super Bock', value: 'Super Bock' },
+              { label: 'Sagres', value: 'Sagres' },
+              { label: 'Colina ', value: 'Colina ' },
+              { label: 'Nortada ', value: 'Nortada ' },
+            ]}
+          />
+          <FormField
+            name="rating"
+            type="select"
+            value={formFilter.rating}
+            onChange={handleChangeFilter}
+            options={[
+              { label: 'Rating 1', value: '1' },
+              { label: 'Rating 2', value: '2' },
+              { label: 'Rating 3', value: '3' },
+              { label: 'Rating 4', value: '4' },
+              { label: 'Rating 5', value: '5' },
+            ]}
+          />
+          <Button type='submit' disabled={formFilter.brand === '' && formFilter.rating === ''}>Filter</Button>
+        </form>
         <div>
           <Button onClick={() => {
             setFormErrors({});
@@ -96,11 +142,18 @@ const ActionBar = ({ handleFallback }: ActionBarTypes) => {
             <FormField
               label="Brand"
               name="brand"
+              type="select"
               value={formData.brand}
               onChange={handleChange}
               error={formErrors.brand}
+              options={[
+                { label: 'Super Bock', value: 'Super Bock' },
+                { label: 'Sagres', value: 'Sagres' },
+                { label: 'Colina ', value: 'Colina ' },
+                { label: 'Nortada ', value: 'Nortada ' },
+              ]}
             />
-
+          
             <FormField
               label="Year"
               name="year"

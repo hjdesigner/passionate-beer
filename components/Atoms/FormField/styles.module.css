@@ -12,7 +12,8 @@
   flex-direction: column;
 }
 .input,
-.textArea {
+.textArea,
+.select {
   border-radius: var(--ui-field-border-redius);
   border: 1px solid var(--ui-colors-grey);
   padding: var(--ui-field-padding);

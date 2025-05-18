@@ -12,12 +12,12 @@ type ProductProps = {
 
 const Product = ({ content } : ProductProps) => {
   const { image, altImage, name, brand, year, rating, createdAt, details} = content;
-  const date = new Date(createdAt);
+  const date = createdAt ? new Date(createdAt) : new Date();
   const formatted = new Intl.DateTimeFormat('pt-PT', {
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric'
-}).format(date);
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date);
 
   return (
     <SectionWrap space="top" className={styles.customShowCase}>

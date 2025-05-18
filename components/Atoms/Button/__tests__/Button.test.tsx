@@ -37,4 +37,34 @@ describe('Button component', () => {
     render(<Button className="extra-class">Extra</Button>);
     expect(screen.getByRole('button')).toHaveClass('extra-class');
   });
+  it('renders with default props', () => {
+    render(<Button>Click me</Button>);
+    const button = screen.getByRole('button', { name: /click me/i });
+
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveClass('button');
+    expect(button).toHaveClass('primary');
+    expect(button).toHaveClass('mdSize');
+  });
+
+  it('renders with type="submit"', () => {
+    render(<Button type="submit">Submit</Button>);
+    const button = screen.getByRole('button', { name: /submit/i });
+
+    expect(button).toHaveAttribute('type', 'submit');
+  });
+
+  it('renders with variant="default"', () => {
+    render(<Button variant="default">Default Button</Button>);
+    const button = screen.getByRole('button', { name: /default button/i });
+
+    expect(button).toHaveClass('default');
+  });
+  it('is disabled when disabled prop is true', () => {
+    render(<Button disabled>Disabled</Button>);
+    const button = screen.getByRole('button', { name: /disabled/i });
+
+    expect(button).toBeDisabled();
+  });
 });

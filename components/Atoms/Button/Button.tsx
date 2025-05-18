@@ -8,6 +8,8 @@ type ButtonProps = {
   disabled?: boolean;
   onClick?: () => void;
   className?: string;
+  type?: 'submit' | 'button';
+  variant?: 'primary' | 'default';
 };
 
 function Button({
@@ -16,12 +18,15 @@ function Button({
   disabled = false,
   onClick,
   className,
+  type = 'button',
+  variant = 'primary'
 }: ButtonProps) {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={clsx(styles.button, styles[`${size}Size`], className)}
+      type={type}
+      className={clsx(styles.button, styles[variant], styles[`${size}Size`], className)}
     >
       {children}
     </button>

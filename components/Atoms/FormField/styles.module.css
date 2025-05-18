@@ -1,0 +1,32 @@
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-field-gap);
+}
+.label {
+  position: relative;
+  font-weight: var(--ui-font-weight-lg);
+}
+.fieldWrap {
+  display: flex;
+  flex-direction: column;
+}
+.input,
+.textArea {
+  border-radius: var(--ui-field-border-redius);
+  border: 1px solid var(--ui-colors-grey);
+  padding: var(--ui-field-padding);
+  font-size: 16px;
+
+  &.error {
+    border-color: var(--ui-colors-red);
+  }
+}
+.errorText {
+  color: var(--ui-colors-red);
+  font-size: 12px;
+}
+.helpText {
+  font-size: 12px;
+  line-height: normal;
+}

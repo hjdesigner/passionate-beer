@@ -1,7 +1,5 @@
 .button {
-  background-color: var(--ui-colors-green);
   border-radius: var(--ui-button-border-radius);
-  color: var(--ui-colors-white);
   cursor: pointer;
   font-weight: var(--ui-font-weight-md);
 
@@ -16,5 +14,15 @@
   &.lgSize {
     font-size: 16px;
     padding: var(--ui-button-padding-lg);
+  }
+
+  &.default {
+    background-color: transparent;
+    border: 1px solid var(--ui-colors-green);
+    color: var(--ui-colors-green);
+  }
+  &.primary {
+    background-color: var(--ui-colors-green);
+    color: var(--ui-colors-white);
   }
 }

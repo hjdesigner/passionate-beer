@@ -34,4 +34,8 @@
   --ui-button-padding-md: 4px 16px;
   --ui-button-padding-lg: 8px 24px;
   --ui-button-border-radius: 16px;
+  --ui-field-gap: 8px;
+  --ui-form-gap: 16px;
+  --ui-field-padding: 8px 16px;
+  --ui-field-border-redius: 12px;
 }

@@ -19,3 +19,20 @@ export const getBeerBySlug = async (slug: string): Promise<Beer> => {
   const data = await res.json();
   return data[0] || null;
 }
+
+export const createBeer = async (beerData: Beer): Promise<Beer> => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/beers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(beerData),
+  });
+
+  if (!res.ok) {
+    throw new Error('Error creating beer');
+  }
+
+  const data = await res.json();
+  return data;
+};

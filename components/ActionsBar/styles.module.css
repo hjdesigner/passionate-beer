@@ -1,0 +1,54 @@
+.actionBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.actionBarModal {
+  width: 100%;
+  max-width: 300px;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  background-color: var(--ui-colors-white);
+  z-index: 2;
+  transform: translateX(500px);
+  transition: transform var(--ui-transition);
+  padding: var(--ui-card-padding-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &.open {
+    transform: translateX(0px);
+  }
+
+   @media (min-width: 640px) {
+    padding: var(--ui-card-padding-md);
+    max-width: 500px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: var(--ui-card-padding-lg);
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-form-gap);
+}
+.formAction {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ui-field-gap);
+}
+.formStatus {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 24px;
+}

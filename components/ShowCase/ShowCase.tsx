@@ -4,24 +4,24 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
 
-import { Button, Heading, SectionWrap } from '@/components';
+import { ActionsBar, Button, Heading, SectionWrap } from '@/components';
 import Svgheart from '/public/assets/showcase/heart.svg';
-import { toSlug } from "@/utils/toSlug";
 import { getBeers } from "@/services/beers";
 
 import styles from './styles.module.css';
 
 export type Beer = {
-  id: string;
+  id?: string;
   name: string;
   image: string;
-  user: number;
-  rating: number;
+  user?: number;
+  rating: string;
   altImage: string;
   details: string;
   brand: string;
   year: string;
-  createdAt: string;
+  createdAt?: string;
+  slug: string;
 };
 
 type ShowCaseProps = {
@@ -58,14 +58,23 @@ const ShowCase = ({ content }: ShowCaseProps) => {
     }
   };
 
+  const upadtedBeers = async () => {
+    const result = await getBeers();
+    console.log(result)
+    if (result) {
+      setBeers(result);
+    }
+  }
+
   return (
     <SectionWrap space='top' className={styles.customShowCase}>
+      <ActionsBar handleFallback={upadtedBeers} />
       <Heading as='h2'>Your collection</Heading>
       {beers.length > 0 ? (
         <ul className={styles.showCase}>
           {beers?.map((beer) => (
             <li key={beer.id} className={styles.showCaseBeer}>
-              <Link href={`/product/${toSlug(beer.name)}`} className={styles.showCaseBeerLink}>
+              <Link href={`/product/${beer.slug}`} className={styles.showCaseBeerLink}>
                 <figure className={styles.showCaseBeerImage}>
                   <Image
                     src={beer.image}

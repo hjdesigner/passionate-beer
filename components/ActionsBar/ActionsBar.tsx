@@ -84,11 +84,12 @@ const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => 
             type="select"
             value={formFilter.brand}
             onChange={handleChangeFilter}
+            textSelect='All brand'
             options={[
               { label: 'Super Bock', value: 'Super Bock' },
               { label: 'Sagres', value: 'Sagres' },
-              { label: 'Colina ', value: 'Colina ' },
-              { label: 'Nortada ', value: 'Nortada ' },
+              { label: 'Colina', value: 'Colina' },
+              { label: 'Nortada', value: 'Nortada' },
             ]}
           />
           <FormField
@@ -96,6 +97,7 @@ const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => 
             type="select"
             value={formFilter.rating}
             onChange={handleChangeFilter}
+            textSelect='All rating'
             options={[
               { label: 'Rating 1', value: '1' },
               { label: 'Rating 2', value: '2' },
@@ -104,7 +106,7 @@ const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => 
               { label: 'Rating 5', value: '5' },
             ]}
           />
-          <Button type='submit' disabled={formFilter.brand === '' && formFilter.rating === ''}>Filter</Button>
+          <Button type='submit'>Filter</Button>
         </form>
         <Button onClick={() => {
           setFormErrors({});
@@ -147,8 +149,8 @@ const ActionBar = ({ handleFallback, handleFilterFallback }: ActionBarTypes) => 
               options={[
                 { label: 'Super Bock', value: 'Super Bock' },
                 { label: 'Sagres', value: 'Sagres' },
-                { label: 'Colina ', value: 'Colina ' },
-                { label: 'Nortada ', value: 'Nortada ' },
+                { label: 'Colina', value: 'Colina' },
+                { label: 'Nortada', value: 'Nortada' },
               ]}
             />
           

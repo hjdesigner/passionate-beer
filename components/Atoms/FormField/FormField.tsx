@@ -15,6 +15,7 @@ type FormFieldProps = {
   max?: number;
   help?: string;
   options?: { label: string; value: string }[];
+  textSelect?: string;
 };
 
 const FormField = ({
@@ -30,6 +31,7 @@ const FormField = ({
   max,
   help,
   options,
+  textSelect = 'Select an option',
 }: FormFieldProps) => {
   return (
     <div className={styles.formField}>
@@ -54,7 +56,7 @@ const FormField = ({
             required={required}
             className={clsx(styles.select, { [styles.error]: error })}
           >
-            <option value="">Select an option</option>
+            <option value="">{textSelect}</option>
             {options?.map((opt) => (
               <option key={opt.value} value={opt.value}>
                 {opt.label}

@@ -37,9 +37,10 @@ const Header = () => {
           type="select"
           value={clientId}
           onChange={handleChange}
+          textSelect='Select an client'
           options={[
-            { label: 'Client Henrique', value: '1' },
-            { label: 'Client Carol', value: '2' },
+            { label: 'Henrique', value: '1' },
+            { label: 'Carol', value: '2' },
           ]}
         />
       </Container>      

@@ -3,17 +3,17 @@ import { getBeerBySlug } from '@/services/beers';
 
 import { Product } from "@/components";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
+  
   const beer = await getBeerBySlug(slug);
- 
-  if (!beer) return { title: 'beer not found' };
+
+  if (!beer) {
+    return {
+      title: 'Beer not found',
+    };
+  }
 
   return {
     title: `${beer.name} – Passionate Beer`,
@@ -24,13 +24,12 @@ export async function generateMetadata({ params }: Params) {
   };
 }
 
-export default async function ProductPage({ params }: Params) {
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
+
   const beer = await getBeerBySlug(slug);
-  
+
   if (!beer) return notFound();
 
-  return (
-    <Product content={beer} />
-  );
+  return <Product content={beer} />;
 }
